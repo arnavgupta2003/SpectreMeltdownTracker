@@ -1,0 +1,4 @@
+2023-10-05 22:07:47 [ERROR: Error running the shell script: Command 'sudo ./lib/spectre-meltdown-checker.sh -v --live --verbose --explain --arch-prefix PREFIX --batch json' returned non-zero exit status 1.]
+2023-10-05 22:07:47 [ERROR: Command stderr: sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+sudo: a password is required
+]
