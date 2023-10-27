@@ -4,6 +4,8 @@ import platform
 import datetime
 import logging
 
+from logging.handlers import RotatingFileHandler #Required for creating max log file size
+
 def get_system_info():
     try:
         system_info = {
@@ -103,12 +105,16 @@ def export_to_readable_json(data, output_filename='output.json'):
             json.dump(data, json_file, indent=2)
 
 def logs():
-	logging.basicConfig(filename='log.log',
-		level = logging.INFO,
-		format = '%(asctime)s [%(levelname)s: %(message)s]',
-		datefmt= '%Y-%m-%d %H:%M:%S')
-
-	
+    logging.basicConfig(
+        filename='log.log',
+        level=logging.INFO,
+        format='%(asctime)s [%(levelname)s: %(message)s]',
+        datefmt='%Y-%m-%d %H:%M:%S'
+    )
+    log_file = 'log.log'
+    max_log_size = 5 * 1024 * 1024  # 5 MB
+    rotating_handler = RotatingFileHandler(log_file, maxBytes=max_log_size, backupCount=5)
+    logging.getLogger().addHandler(rotating_handler)	
 
 def main():
     logs()
